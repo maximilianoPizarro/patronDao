@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="datos.Provincia" table="provincia">
+
+<id column ="idProvincia" name="idProvincia">
+<generator class="identity" />
+</id>
+
+<property column="provincia" name="provincia" type="string" />
+<set name="mediciones" table="medicion" order-by="idMedicion asc" inverse="true" lazy="true" fetch="select">
+<key column="idProvincia" not-null="true" />
+<one-to-many class="datos.Medicion" />
+</set>
+
+</class>
+</hibernate-mapping>

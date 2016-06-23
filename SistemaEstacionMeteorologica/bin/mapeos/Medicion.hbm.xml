@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="datos.Medicion" table="medicion">
+
+<id column ="idMedicion" name="idMedicion">
+<generator class="identity" />
+</id>
+
+<property column="fecha" name="fecha" type="calendar" />
+<property column="presion" name="presion" type="float"/>
+<property column="temperatura" name="temperatura" type="float"/>
+<property column="humedad" name="humedad" type="float"/>
+<property column="precipitacion" name="precipitacion" type="float"/>
+<property column="velocidadViento" name="velocidadViento" type="float"/>
+<property column="direccionViento" name="direccionViento" type="string"/>
+
+<many-to-one name="provincia" column="idProvincia" class="datos.Provincia" unique="true" not-null="true"/>
+<many-to-one name="estacion" column="idEstacionMeteorologica" class="datos.EstacionMeteorologica" unique="true" not-null="true"/>
+
+</class>
+</hibernate-mapping>

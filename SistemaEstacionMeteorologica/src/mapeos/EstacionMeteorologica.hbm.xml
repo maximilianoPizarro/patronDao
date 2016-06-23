@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="datos.EstacionMeteorologica" table="estacionmeteorologica">
+
+<id column ="idEstacionMeteorologica" name="idEstacionMeteorologica">
+<generator class="identity" />
+</id>
+
+<property column="estacionMeteorologica" name="estacionMeteorologica" type="string" />
+<property column="altura" name="altura" type="int" />
+
+<set name="mediciones" table="medicion" order-by="idMedicion asc" inverse="true" lazy="true" fetch="select">
+<key column="idEstacionMeteorologica" not-null="true" />
+<one-to-many class="datos.Medicion" />
+</set>
+
+</class>
+</hibernate-mapping>
